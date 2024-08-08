@@ -1,6 +1,12 @@
+-- Criando e definindo o esquema
+
+CREATE SCHEMA gerenciamento_de_jogos;
+
+SET SCHEMA 'gerenciamento_de_jogos';
+
 -- Banco de dados:
 
-CREATE DATABASE gerenciamento_de_jogos;
+CREATE DATABASE jogos;
 
 -- Tabelas das entidades:
 
@@ -38,7 +44,7 @@ CREATE TABLE jogo(
 
 CREATE TABLE eletronico(
     dispositivo VARCHAR(50),
-    jogo_id INTEGER
+    jogo_id INTEGER NOT NULL
 );
 
 CREATE TABLE atividade_ar_livre(
@@ -46,7 +52,7 @@ CREATE TABLE atividade_ar_livre(
     bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(100) NOT NULL,
-    jogo_id INTEGER
+    jogo_id INTEGER NOT NULL
 );
 
 CREATE TABLE conquista(
@@ -61,7 +67,16 @@ CREATE TABLE recompensa(
     descricao TEXT
 );
 
--- Tabelas associativas:
+-- Criando os relacionamento 1..n:
+ALTER TABLE eletronico
+    ADD CONSTRAINT fk_eletronico_jogo 
+    FOREIGN KEY(jogo_id) REFERENCES jogo(id);
+
+ALTER TABLE atividade_ar_livre
+    ADD CONSTRAINT fk_atividade_jogo
+    FOREIGN KEY(jogo_id) REFERENCES jogo(id);
+
+-- Tabelas associativas para relacionamentos n..n:
 
 CREATE TABLE partida_jogador(
     partida_id INTEGER,
@@ -83,8 +98,17 @@ CREATE TABLE partida_historico(
     pontuacao_alcancada REAL NOT NULL
 );
 
-CREATE TABLE historico_conquista();
+CREATE TABLE historico_conquista(
+    historico_id INTEGER,
+    conquista_id INTEGER
+);
 
-CREATE TABLE ranking_conquista();
+CREATE TABLE ranking_conquista(
+    conquista_id INTEGER,
+    recompensa_id INTEGER
+);
 
-CREATE TABLE conquista_recompensa()
+CREATE TABLE conquista_recompensa(
+    conquista_id INTEGER,
+    recompensa_id INTEGER
+)
