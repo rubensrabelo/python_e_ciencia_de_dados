@@ -30,7 +30,7 @@ CREATE TABLE historico(
 CREATE TABLE partida(
     id SERIAL PRIMARY KEY,
     data_hora TIMESTAMP NOT NULL,
-    duracao REAL
+    duracao INTERVAL
 );
 
 CREATE TABLE ranking(
@@ -39,7 +39,7 @@ CREATE TABLE ranking(
 
 CREATE TABLE jogo(
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(50) UNIQUE NOT NULL,
+    nome VARCHAR(100) UNIQUE NOT NULL,
     tipo VARCHAR(50) NOT NULL,
     descricao TEXT
 );
@@ -105,7 +105,7 @@ CREATE TABLE jogador_ranking(
 CREATE TABLE partida_historico(
     partida_id INTEGER NOT NULL,
     historico_id INTEGER NOT NULL,
-    pontuacao_alcancada REAL NOT NULL,
+    pontuacao_alcancada INTEGER NOT NULL,
     PRIMARY KEY(partida_id, historico_id),
     FOREIGN KEY(partida_id) REFERENCES partida(id),
     FOREIGN KEY(historico_id) REFERENCES historico(id)
