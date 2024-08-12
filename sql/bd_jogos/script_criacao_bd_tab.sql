@@ -23,7 +23,8 @@ CREATE TABLE jogador(
 
 CREATE TABLE historico(
     id SERIAL PRIMARY KEY,
-    data_hora TIMESTAMP NOT NULL
+    data_hora TIMESTAMP NOT NULL,
+    jogador_id INTEGER NOT NULL
 );
 
 CREATE TABLE partida(
@@ -69,6 +70,10 @@ CREATE TABLE recompensa(
 );
 
 -- Criando os relacionamento 1..n:
+ALTER TABLE historico
+    ADD CONSTRAINT fk_jogador_historico
+    FOREIGN KEY(jogador_id) REFERENCES jogador(id);
+
 ALTER TABLE eletronico
     ADD CONSTRAINT fk_eletronico_jogo 
     FOREIGN KEY(jogo_id) REFERENCES jogo(id);
