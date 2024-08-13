@@ -30,11 +30,13 @@ CREATE TABLE historico(
 CREATE TABLE partida(
     id SERIAL PRIMARY KEY,
     data_hora TIMESTAMP NOT NULL,
-    duracao INTERVAL
+    duracao INTERVAL,
+    jogo_id INTEGER NOT NULL
 );
 
 CREATE TABLE ranking(
-    id SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY,
+    jogo_id INTEGER NOT NULL
 );
 
 CREATE TABLE jogo(
@@ -69,6 +71,13 @@ CREATE TABLE recompensa(
     descricao TEXT
 );
 
+
+-- Criando o relacionamento 1..1
+
+ALTER TABLE ranking
+    ADD CONSTRAINT fk_ranking_jogo
+    FOREIGN KEY(jogo_id) REFERENCES jogo(id);
+
 -- Criando os relacionamento 1..n:
 ALTER TABLE historico
     ADD CONSTRAINT fk_jogador_historico
@@ -80,6 +89,10 @@ ALTER TABLE eletronico
 
 ALTER TABLE atividade_ar_livre
     ADD CONSTRAINT fk_atividade_jogo
+    FOREIGN KEY(jogo_id) REFERENCES jogo(id);
+
+ALTER TABLE partida
+    ADD CONSTRAINT fk_ranking_jogo
     FOREIGN KEY(jogo_id) REFERENCES jogo(id);
 
 -- Tabelas associativas para relacionamentos n..n:
