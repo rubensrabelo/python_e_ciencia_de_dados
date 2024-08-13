@@ -15,14 +15,9 @@ INSERT INTO historico (data_hora, jogador_id) VALUES
     ('2024-08-10 14:30:00', 1),
     ('2024-08-11 15:00:00', 2);
 
-<<<<<<< HEAD
--- Criação da tabela 'ranking'
-
-=======
 -- 3. Criação da Tabela 'ranking'
 INSERT INTO ranking (id) VALUES
     (1);
->>>>>>> working
 
 ------------------------------------------------------------------------------------------------------------------------
 
