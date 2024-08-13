@@ -1,4 +1,4 @@
--- Campeonato de Xadrez Online
+-- jogo de Xadrez Online
 
 SET SCHEMA 'bd_jogos';
 
@@ -15,21 +15,21 @@ INSERT INTO historico (data_hora, jogador_id) VALUES
     ('2024-08-10 14:30:00', 1),
     ('2024-08-11 15:00:00', 2);
 
--- 3. Criação da Tabela 'ranking'
-INSERT INTO ranking (id) VALUES
-    (1);
-
 ------------------------------------------------------------------------------------------------------------------------
 
 -- Sistema: Cadastro do Jogo
 
--- 4. tabela 'jogo'
+-- 3. tabela 'jogo'
 INSERT INTO jogo (nome, tipo, descricao) VALUES
     ('Xadrez Online', 'Tabuleiro', 'Um jogo de xadrez online que permite jogar contra outros jogadores ou contra uma IA.');
 
--- 5. tabela 'eletronico'
+-- 4. tabela 'eletronico'
 INSERT INTO eletronico (dispositivo, jogo_id) VALUES
     ('PC', 1);
+
+-- 5. Criação da Tabela 'ranking'
+INSERT INTO ranking (id, jogo_id) VALUES
+    (1, 1);
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -56,10 +56,10 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 -- Sistema: Realização das partidas
 
 -- 10. Tabela 'partida'
-INSERT INTO partida (data_hora, duracao)
-VALUES ('2024-08-10 14:30:00', '00:45:00'),
-       ('2024-08-11 16:00:00', '00:55:00'),
-       ('2024-08-12 18:20:00', '00:35:00');
+INSERT INTO partida (data_hora, duracao, jogo_id)
+VALUES ('2024-08-10 14:30:00', '00:45:00', 1),
+       ('2024-08-11 16:00:00', '00:55:00', 1),
+       ('2024-08-12 18:20:00', '00:35:00', 1);
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
