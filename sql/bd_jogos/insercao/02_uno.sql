@@ -11,7 +11,7 @@ INSERT INTO jogador (nome, email, telefone_res, telefone_cel, data_nascimento, s
 
 -- 2. Criação da tabela 'historico' p/ os jogadores
 INSERT INTO historico (data_hora, jogador_id) VALUES
-    ('2024-08-10 14:30:00', 3); -- id 03
+    ('2024-02-15 16:30:15', 3); -- id 03
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -42,8 +42,8 @@ INSERT INTO recompensa (nome, descricao) VALUES
 
 -- 8. Tabela 'conquista_recompensa
 INSERT INTO conquista_recompensa (conquista_id, recompensa_id) VALUES 
-        (2, 2),  -- Campeão recompensa com de uma caixa de chocolate
-        (3, 3);  -- Segundo lugar recompensa com uma barra de chocolate
+    (2, 2),  -- Campeão recompensa com de uma caixa de chocolate
+    (3, 3);  -- Segundo lugar recompensa com uma barra de chocolate
 
 -- 9. Tabela 'ranking_conquista'
 INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
@@ -56,9 +56,9 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 
 -- 10. Tabela 'partida'
 INSERT INTO partida (data_hora, duracao, jogo_id)
-VALUES ('2024-08-10 14:30:00', '00:50:00', 2), -- id 04
-       ('2024-08-11 16:00:00', '00:30:00', 2), -- id 05
-       ('2024-08-12 18:20:00', '00:25:00', 2); -- id 06
+VALUES ('2024-08-15 16:45:00', '00:50:00', 2), -- id 04
+       ('2024-08-15 17:00:00', '00:30:00', 2), -- id 05
+       ('2024-08-15 17:45:00', '00:25:00', 2); -- id 06
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
@@ -66,27 +66,27 @@ VALUES (4, 1, 0.0),  -- Carlos perdeu a partida 1 (0)
        (4, 2, 0.0),  -- Mariana perdeu a partida 1 (0)
        (4, 3, 1.0),  -- Ana ganhou a partida 1 (1)
        
-       (5, 1, 0.0),  -- Carlos perdeu a partida 1 (0)
-       (5, 2, 1.0),  -- Mariana ganhou a partida 1 (1)
-       (5, 3, 0.0),  -- Ana perdeu a partida 1 (0)
+       (5, 1, 0.0),  -- Carlos ganhou a partida 2 (1)
+       (5, 2, 1.0),  -- Mariana perdeu a partida 2 (0)
+       (5, 3, 0.0),  -- Ana perdeu a partida 2 (0)
        
-       (5, 1, 0.0),  -- Carlos perdeu a partida 1 (0)
-       (5, 2, 1.0),  -- Mariana ganhou a partida 1 (1)
-       (5, 3, 0.0),  -- Ana ganhou a partida 1 (0)
-       
--- >>>>>>>>>>>>>>>>>> PAREI AQUI CADASTRAR TABELA 12
+       (6, 1, 1.0),  -- Carlos perdeu a partida 1 (2)
+       (6, 2, 0.0),  -- Mariana ganhou a partida 1 (0)
+       (6, 3, 0.0);  -- Ana ganhou a partida 1 (0)
 
 -- 12. Tabela 'partida_historico'
 INSERT INTO partida_historico (partida_id, historico_id, pontuacao_alcancada)
-VALUES (4, 1, 1),  -- Partida 1 com histórico do Carlos
+VALUES (4, 1, 0),  -- Partida 1 com histórico do Carlos (vitória)
        (4, 2, 0),  -- Partida 1 com histórico da Mariana (derrota)
-       (4, 3, 0),  -- Partida 1 com histórico da Mariana (derrota)
-       (5, 1, 0),  -- Partida 2 com histórico do Carlos (derrota)
-       (5, 2, 1),  -- Partida 2 com histórico da Mariana (vitória)
-       (5, 3, 1),  -- Partida 2 com histórico da Mariana (vitória)
-       (6, 1, 0),  -- Partida 3 com histórico do Carlos (derrota)
-       (6, 2, 1);  -- Partida 3 com histórico da Mariana (vitória)
-       (6, 3, 1);  -- Partida 3 com histórico da Mariana (vitória)
+       (4, 3, 1),  -- Partida 1 com histórico da Ana (derrota)
+       
+       (5, 1, 1),  -- Partida 2 com histórico do Carlos (vitória)
+       (5, 2, 0),  -- Partida 2 com histórico da Mariana (derrota)
+       (5, 3, 0),  -- Partida 2 com histórico da Ana (derrota)
+       
+       (6, 1, 1),  -- Partida 3 com histórico do Carlos (vitória)
+       (6, 2, 0),  -- Partida 3 com histórico da Mariana (derrota)
+       (6, 3, 0);  -- Partida 3 com histórico da Ana (derrota)
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -94,10 +94,12 @@ VALUES (4, 1, 1),  -- Partida 1 com histórico do Carlos
 
 -- 13. Tabela 'jogador_ranking'
 INSERT INTO jogador_ranking(jogador_id, ranking_id, posicao) VALUES
-    (2, 1, 1), -- Mariana finalizou em primeiro com 2 pontos
-    (1, 1, 2); -- Carlos finalizou em segundo com 1 ponto
+    (1, 2, 1), -- Carlos finalizou em primeiro com 2 pontos
+    (3, 2, 2), -- Ana finalizou em segundo com 1 ponto
+    (2, 2, 3); -- Marian finalizou em terceiro com 0
 
 
 -- 14. Tabela 'historico_conquista'
 INSERT INTO historico_conquista(historico_id, conquista_id) VALUES
-    (2, 1);
+    (1, 2),
+    (3, 3);

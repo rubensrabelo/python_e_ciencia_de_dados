@@ -12,8 +12,8 @@ INSERT INTO jogador (nome, email, telefone_res, telefone_cel, data_nascimento, s
 
 -- 2. Criação da tabela 'historico' p/ os jogadores
 INSERT INTO historico (data_hora, jogador_id) VALUES
-    ('2024-08-10 14:30:00', 1), -- id 01
-    ('2024-08-11 15:00:00', 2); -- id 02
+    ('2024-02-05 14:30:00', 1), -- id 01
+    ('2024-02-06 15:00:00', 2); -- id 02
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -57,9 +57,9 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 
 -- 10. Tabela 'partida'
 INSERT INTO partida (data_hora, duracao, jogo_id)
-VALUES ('2024-08-10 14:30:00', '00:45:00', 1), -- id 01
-       ('2024-08-11 16:00:00', '00:55:00', 1), -- id 02
-       ('2024-08-12 18:20:00', '00:35:00', 1); -- id 03
+VALUES ('2024-02-10 16:00:00', '00:45:00', 1), -- id 01
+       ('2024-02-10 17:00:00', '00:55:00', 1), -- id 02
+       ('2024-02-10 18:05:00', '00:35:00', 1); -- id 03
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
