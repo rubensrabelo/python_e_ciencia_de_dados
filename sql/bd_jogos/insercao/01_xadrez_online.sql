@@ -3,17 +3,17 @@
 SET SCHEMA 'bd_jogos';
 
 ------------------------------------------------------------------------------------------------------------------------
--- Sistema: cadastro do jogador, do histórico e criação do ranking 
+-- Sistema: cadastrar jogadodores e históricos 
 
 -- 1. Criação de dois jogadores p/ a tabela 'jogador'
 INSERT INTO jogador (nome, email, telefone_res, telefone_cel, data_nascimento, senha) VALUES 
-    ('Carlos Pereira', 'carlos.pereira@example.com', NULL, '91234-5678', '1990-05-12', 'senhaCarlos123'),
-    ('Mariana Silva', 'mariana.silva@example.com', NULL, '98765-4321', '1992-08-25', 'senhaMariana123');
+    ('Carlos Pereira', 'carlos.pereira@example.com', NULL, '91234-5678', '1990-05-12', 'senhaCarlos123'), -- id 01
+    ('Mariana Silva', 'mariana.silva@example.com', NULL, '98765-4321', '1992-08-25', 'senhaMariana123'); -- id 02
 
 -- 2. Criação da tabela 'historico' p/ os jogadores
 INSERT INTO historico (data_hora, jogador_id) VALUES
-    ('2024-08-10 14:30:00', 1),
-    ('2024-08-11 15:00:00', 2);
+    ('2024-08-10 14:30:00', 1), -- id 01
+    ('2024-08-11 15:00:00', 2); -- id 02
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -21,15 +21,15 @@ INSERT INTO historico (data_hora, jogador_id) VALUES
 
 -- 3. tabela 'jogo'
 INSERT INTO jogo (nome, tipo, descricao) VALUES
-    ('Xadrez Online', 'Tabuleiro', 'Um jogo de xadrez online que permite jogar contra outros jogadores ou contra uma IA.');
+    ('Xadrez Online', 'Tabuleiro', 'Um jogo de xadrez online que permite jogar contra outros jogadores ou contra uma IA.'); -- id 01
 
 -- 4. tabela 'eletronico'
 INSERT INTO eletronico (dispositivo, jogo_id) VALUES
-    ('PC', 1);
+    ('PC', 1); -- id 01
 
 -- 5. Criação da Tabela 'ranking'
 INSERT INTO ranking (id, jogo_id) VALUES
-    (1, 1);
+    (1, 1); -- id 01
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -57,9 +57,9 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 
 -- 10. Tabela 'partida'
 INSERT INTO partida (data_hora, duracao, jogo_id)
-VALUES ('2024-08-10 14:30:00', '00:45:00', 1),
-       ('2024-08-11 16:00:00', '00:55:00', 1),
-       ('2024-08-12 18:20:00', '00:35:00', 1);
+VALUES ('2024-08-10 14:30:00', '00:45:00', 1), -- id 01
+       ('2024-08-11 16:00:00', '00:55:00', 1), -- id 02
+       ('2024-08-12 18:20:00', '00:35:00', 1); -- id 03
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
