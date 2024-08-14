@@ -7,14 +7,14 @@ SET SCHEMA 'bd_jogos';
 
 -- 1. Criação de dois jogadores p/ a tabela 'jogador'
 INSERT INTO jogador (nome, email, telefone_res, telefone_cel, data_nascimento, senha) VALUES 
-    ('Yago Lemos', 'yago.lemos@example.com', NULL, '92837-8703', '1998-03-12', 'senhaYago123'),
-    ('Cristiano Felix', 'Cristiano.felix@example.com', NULL, '92510-5712', '1995-10-15', 'senhaFelix456');
+    ('Yago Lemos', 'yago.lemos@example.com', NULL, '92837-8703', '1998-03-12', 'senhaYago123'), -- id 05
+    ('Cristiano Felix', 'Cristiano.felix@example.com', NULL, '92510-5712', '1995-10-15', 'senhaFelix456'); -- id 06
     
 
 -- 2. Criação da tabela 'historico' p/ os jogadores
 INSERT INTO historico (data_hora, jogador_id) VALUES
-    ('2024-08-10 14:30:00', 4),
-    ('2024-08-11 15:00:00', 5);
+    ('2024-08-10 14:30:00', 4), -- id 05
+    ('2024-08-11 15:00:00', 5); -- id 06
   
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -22,12 +22,12 @@ INSERT INTO historico (data_hora, jogador_id) VALUES
 
 -- 3. tabela 'jogo'
 INSERT INTO jogo (nome, tipo, descricao) VALUES
-    ('Domino', 'Tabuleiro', 'Um jogo de tabuleiro que permite jogar contra um ou mais jogadores.');
+    ('Domino', 'Tabuleiro', 'Um jogo de tabuleiro que permite jogar contra um ou mais jogadores.'); -- id 04
 
 
 -- 4. Criação da Tabela 'ranking'
 INSERT INTO ranking (id, jogo_id) VALUES
-    (1, 1);
+    (1, 1); -- id 04
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -35,12 +35,12 @@ INSERT INTO ranking (id, jogo_id) VALUES
 
 -- 5. Tabela 'conquista'
 INSERT INTO conquista (nome, descricao) VALUES 
-    ('Mestre do Domino', 'O jogador ganhou do(s) seu(s) oponente(s) ao ter o maior número de vitórias em duas partidas.'),
-    ('Padawan do Domino', 'O jogador com o segundo maior numero de vitorias, após finalizar as três partidas');
+    ('Mestre do Domino', 'O jogador ganhou do(s) seu(s) oponente(s) ao ter o maior número de vitórias em duas partidas.'), -- id 05
+    ('Padawan do Domino', 'O jogador com o segundo maior numero de vitorias, após finalizar as três partidas'); -- apagar
 -- 6. Tabela 'recompensa'
 INSERT INTO recompensa (nome, descricao) VALUES 
-    ('Jogo de dominó', 'O jogador ganhará do jogo leva um jogo de dominó'),
-	('Livro de dominó', 'O jogador ganhará um livro de estrategias de dominó');
+    ('Jogo de dominó', 'O jogador ganhará do jogo leva um jogo de dominó'), -- id 05
+	('Livro de dominó', 'O jogador ganhará um livro de estrategias de dominó'); -- apagar
 
 -- 7. Tabela 'conquista_recompensa
 INSERT INTO conquista_recompensa (conquista_id, recompensa_id) VALUES 
