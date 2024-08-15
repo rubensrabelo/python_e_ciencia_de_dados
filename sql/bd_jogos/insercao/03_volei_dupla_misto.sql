@@ -26,7 +26,7 @@ INSERT INTO jogo (nome, tipo, descricao) VALUES
 -- 4. Não precisa da tabela 'eletronico', mas é necessário inserir na tabela 'atividade_ar_livre'
 
 INSERT INTO atividade_ar_livre (rua, bairro, cidade, estado, jogo_id) VALUES
-('Ginásio Rinaldo Róger de Lima', 'Planalto Universitário', 'Quixadá', 'Ceará', 3);
+('Ginásio Rinaldo Róger de Lima', 'Planalto Universitário', 'Quixadá', 'Ceará', 3); -- id 03
 
 
 -- 5. Não precisa da tabela 'ranking'
