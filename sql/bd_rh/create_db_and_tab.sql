@@ -61,9 +61,9 @@ ALTER TABLE tb_funcionarios
     ADD CONSTRAINT fk_cargo_id
     FOREIGN KEY(cargo_id) REFERENCES tb_cargo(id);
 
-ALTER TABLE tb_filial
+ALTER TABLE tb_funcionarios
     ADD CONSTRAINT fk_filial_id
     FOREIGN KEY(filial_id) REFERENCES tb_filial(id);
 
-ALTER TABEL tb_ponto_eletronico 
-    ADD CONSTRAINT fk_funcionario_id REFERENCES tb_funcionarios(id); 
+ALTER TABLE tb_ponto_eletronico 
+    ADD CONSTRAINT fk_funcionario_id FOREIGN KEY(funcionario_id) REFERENCES tb_funcionarios(id); 
