@@ -74,31 +74,31 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 
 -- 10. Tabela 'partida'
 INSERT INTO partida (data_hora, duracao, jogo_id)
-VALUES ('2024-08-10 14:30:00', '00:30:00', 4), -- id 08
-       ('2024-08-11 16:00:00', '01:00:00', 4), -- id 09
-       ('2024-08-12 18:20:00', '00:20:00', 4); -- id 10
+VALUES ('2024-08-10 14:30:00', '00:30:00', 4), -- id 10
+       ('2024-08-11 16:00:00', '01:00:00', 4), -- id 11
+       ('2024-08-12 18:20:00', '00:20:00', 4); -- id 12
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
-VALUES (8, 5, 0.0),  -- Yago perdeu a partida 1 (0)
-       (8, 6, 1.0),  -- Cristiano ganhou a partida 1 (1)
+VALUES (10, 5, 0.0),  -- Yago perdeu a partida 1 (0)
+       (10, 6, 1.0),  -- Cristiano ganhou a partida 1 (1)
 	
-       (9, 5, 1.0),  -- Yago ganhou a partida 2 (0 + 1)
-       (9, 6, 0.0),  -- Cristiano perdeu a partida 2 (1 + 0)
+       (11, 5, 1.0),  -- Yago ganhou a partida 2 (0 + 1)
+       (11, 6, 0.0),  -- Cristiano perdeu a partida 2 (1 + 0)
 	
-       (10, 5, 0.0),  -- Yago perdeu a partida 2 (0 + 1 + 0)
-       (10, 6, 1.0);  -- Cristiano ganhou a partida 2 (1 + 0 + 1)
+       (12, 5, 0.0),  -- Yago perdeu a partida 2 (0 + 1 + 0)
+       (12, 6, 1.0);  -- Cristiano ganhou a partida 2 (1 + 0 + 1)
 
 -- 12. Tabela 'partida_historico'
 INSERT INTO partida_historico (partida_id, historico_id, pontuacao_alcancada)
-VALUES (8, 5, 0),  -- Partida 1 com histórico do Yago (derrota)
-       (8, 6, 1),  -- Partida 1 com histórico do Cristiano (vitória)
+VALUES (10, 5, 0),  -- Partida 1 com histórico do Yago (derrota)
+       (10, 6, 1),  -- Partida 1 com histórico do Cristiano (vitória)
 	
-	   (9, 5, 1),  -- Partida 2 com histórico do Yago (vitória)   
-       (9, 6, 0),  -- Partida 2 com histórico do Cristiano (derrota)
+	   (11, 5, 1),  -- Partida 2 com histórico do Yago (vitória)   
+       (11, 6, 0),  -- Partida 2 com histórico do Cristiano (derrota)
 	
-       (10, 5, 1),  -- Partida 3 com histórico do Yago (derrota)
-       (10, 6, 1);  -- Partida 3 com histórico do Cristiano (vitória)
+       (12, 5, 1),  -- Partida 3 com histórico do Yago (derrota)
+       (12, 6, 1);  -- Partida 3 com histórico do Cristiano (vitória)
 	
 
 ------------------------------------------------------------------------------------------------------------------------

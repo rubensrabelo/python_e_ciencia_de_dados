@@ -59,43 +59,43 @@ INSERT INTO ranking_conquista (conquista_id, ranking_id) VALUES
 
 -- 10. Tabela 'partida'
 INSERT INTO partida (data_hora, duracao, jogo_id)
-VALUES ('2024-08-16 13:30:00', '00:10:50', 5), -- id 11
-       ('2024-08-16 14:00:00', '00:15:00', 5), -- id 12
-       ('2024-08-16 14:30:00', '00:08:00', 5); -- id 13
+VALUES ('2024-08-16 13:30:00', '00:10:50', 5), -- id 13
+       ('2024-08-16 14:00:00', '00:15:00', 5), -- id 14
+       ('2024-08-16 14:30:00', '00:08:00', 5); -- id 15
 
 -- 11. Tabela 'partida_jogador'
 INSERT INTO partida_jogador (partida_id, jogador_id, pontuacao_alcancada)
-VALUES (11, 5, 1.0),  -- Yago ganhou a partida 1 (1)
-       (11, 6, 0.0),  -- Cristiano perdeu a partida 1 (0)
-	   (11, 7, 1.0),  -- Emanoel ganhou a partida 1 (1) 
-	   (11, 3, 0.0),  -- Ana Costa perdeu a partida 1 (0)
+VALUES (13, 5, 1.0),  -- Yago ganhou a partida 1 (1)
+       (13, 6, 0.0),  -- Cristiano perdeu a partida 1 (0)
+	   (13, 7, 1.0),  -- Emanoel ganhou a partida 1 (1) 
+	   (13, 3, 0.0),  -- Ana Costa perdeu a partida 1 (0)
 	
-       (12, 5, 1.0),  -- Yago ganhou a partida 2 (1 + 1)
-       (12, 6, 0.0),  -- Cristiano perdeu a partida 2 (0 + 0)
-	   (12, 7, 1.0),  -- Emanoel ganhou a partida 2 (1 + 1) 
-	   (12, 3, 0.0),  -- Ana Costa perdeu a partida 2 (0 + 0)
+       (14, 5, 1.0),  -- Yago ganhou a partida 2 (1 + 1)
+       (14, 6, 0.0),  -- Cristiano perdeu a partida 2 (0 + 0)
+	   (14, 7, 1.0),  -- Emanoel ganhou a partida 2 (1 + 1) 
+	   (14, 3, 0.0),  -- Ana Costa perdeu a partida 2 (0 + 0)
 	
-       (13, 5, 0.0),  -- Yago perdeu a partida 3 (1 + 1 + 0)
-       (13, 6, 1.0),  -- Cristiano ganhou a partida 3 (0 + 0 + 1)
-       (13, 7, 1.0),  -- Emanoel ganhou a partida 3 (1 + 1 + 1) 
-	   (13, 3, 0.0);  -- Ana Costa perdeu a partida 3 (0 + 0 + 0)
+       (15, 5, 0.0),  -- Yago perdeu a partida 3 (1 + 1 + 0)
+       (15, 6, 1.0),  -- Cristiano ganhou a partida 3 (0 + 0 + 1)
+       (15, 7, 1.0),  -- Emanoel ganhou a partida 3 (1 + 1 + 1) 
+	   (15, 3, 0.0);  -- Ana Costa perdeu a partida 3 (0 + 0 + 0)
 
 -- 12. Tabela 'partida_historico'
 INSERT INTO partida_historico (partida_id, historico_id, pontuacao_alcancada)
-VALUES (11, 5, 1),  -- Partida 1 com histórico do Yago (vitória)
-       (11, 6, 0),  -- Partida 1 com histórico do Cristiano (derrota)
-	   (11, 7, 1),  -- Partida 1 com histórico do Emanoel (vitória) 
-	   (11, 3, 0),  -- Partida 1 com histórico da Ana Costa (derrota)	   4
+VALUES (13, 5, 1),  -- Partida 1 com histórico do Yago (vitória)
+       (13, 6, 0),  -- Partida 1 com histórico do Cristiano (derrota)
+	   (13, 7, 1),  -- Partida 1 com histórico do Emanoel (vitória) 
+	   (13, 3, 0),  -- Partida 1 com histórico da Ana Costa (derrota)	   4
 	
-	   (13, 5, 1),  -- Partida 2 com histórico do Yago (derrota)   
-       (13, 6, 0),  -- Partida 2 com histórico do Cristiano (vitória)
-	   (13, 7, 0),  -- Partida 2 com histórico do Emanoel (vitória)
-	   (13, 3, 0),  -- Partida 2 com histórico do Ana Costa (derrota)
+	   (14, 5, 1),  -- Partida 2 com histórico do Yago (derrota)   
+       (14, 6, 0),  -- Partida 2 com histórico do Cristiano (vitória)
+	   (14, 7, 0),  -- Partida 2 com histórico do Emanoel (vitória)
+	   (14, 3, 0),  -- Partida 2 com histórico do Ana Costa (derrota)
 	
-       (14, 5, 1),  -- Partida 3 com histórico do Yago (derrota)
-       (14, 6, 1),  -- Partida 3 com histórico do Cristiano (vitória)
-       (14, 7, 0),  -- Partida 3 com histórico do Emanoel (vitória)
-	   (14, 3, 0);  -- Partida 3 com histórico da Ana Costa (derrota)
+       (15, 5, 1),  -- Partida 3 com histórico do Yago (derrota)
+       (15, 6, 1),  -- Partida 3 com histórico do Cristiano (vitória)
+       (15, 7, 0),  -- Partida 3 com histórico do Emanoel (vitória)
+	   (15, 3, 0);  -- Partida 3 com histórico da Ana Costa (derrota)
 	
 
 ------------------------------------------------------------------------------------------------------------------------
