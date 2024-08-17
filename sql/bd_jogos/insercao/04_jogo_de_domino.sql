@@ -13,13 +13,8 @@ INSERT INTO jogador (nome, email, telefone_res, telefone_cel, data_nascimento, s
 
 -- 2. Criação da tabela 'historico' p/ os jogadores
 INSERT INTO historico (data_hora, jogador_id) VALUES
-<<<<<<< HEAD:sql/bd_jogos/insercao/04_jogo_de_domino_analisar.sql
-    ('2024-08-10 14:30:00', 4), -- id 05
-    ('2024-08-11 15:00:00', 5); -- id 06
-=======
     ('2024-08-10 14:30:00', 5),
     ('2024-08-11 15:00:00', 6);
->>>>>>> working:sql/bd_jogos/insercao/04_jogo_de_domino.sql
   
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -33,11 +28,7 @@ INSERT INTO jogo (nome, tipo, descricao) VALUES
 
 -- 5. Criação da Tabela 'ranking'
 INSERT INTO ranking (id, jogo_id) VALUES
-<<<<<<< HEAD:sql/bd_jogos/insercao/04_jogo_de_domino_analisar.sql
-    (1, 1); -- id 04
-=======
     (4, 4); -- id 04
->>>>>>> working:sql/bd_jogos/insercao/04_jogo_de_domino.sql
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -45,16 +36,11 @@ INSERT INTO ranking (id, jogo_id) VALUES
 
 -- 6. Tabela 'conquista'
 INSERT INTO conquista (nome, descricao) VALUES 
-<<<<<<< HEAD:sql/bd_jogos/insercao/04_jogo_de_domino_analisar.sql
-    ('Mestre do Domino', 'O jogador ganhou do(s) seu(s) oponente(s) ao ter o maior número de vitórias em duas partidas.'), -- id 05
-    ('Padawan do Domino', 'O jogador com o segundo maior numero de vitorias, após finalizar as três partidas'); -- apagar
+    ('Mestre do Domino', 'O jogador ganhou do(s) seu(s) oponente(s) ao ter o maior número de vitórias em duas partidas.'); -- id 05
+
 -- 6. Tabela 'recompensa'
 INSERT INTO recompensa (nome, descricao) VALUES 
-    ('Jogo de dominó', 'O jogador ganhará do jogo leva um jogo de dominó'), -- id 05
-	('Livro de dominó', 'O jogador ganhará um livro de estrategias de dominó'); -- apagar
-=======
-    ('Mestre do Domino', 'O jogador ganhou do(s) seu(s) oponente(s) ao ter o maior número de vitórias em duas partidas.'); -- id 05
->>>>>>> working:sql/bd_jogos/insercao/04_jogo_de_domino.sql
+    ('Jogo de dominó', 'O jogador ganhará do jogo leva um jogo de dominó'); -- id 05
 
 -- 7. Tabela 'recompensa'
 INSERT INTO recompensa (nome, descricao) VALUES 
