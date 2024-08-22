@@ -34,8 +34,9 @@ INSERT INTO tb_funcionarios (nome, sobrenome, data_nascimento, data_admissao, da
 ('Carla', 'Pereira', '1992-04-10', '2020-09-15', NULL, 'F', 1, 1, 3),
 ('Roberto', 'Mendes', '1980-01-05', '2018-11-22', NULL, 'M', 4, 4, 2),
 ('Luciana', 'Fernandes', '1996-08-18', '2022-03-30', NULL, 'F', 3, 3, 1),
-('Ricardo', 'Almeida', '1985-06-17', '2020-07-05', NULL, 'M', 2, 2, 3),;
+('Ricardo', 'Almeida', '1985-06-17', '2020-07-05', NULL, 'M', 2, 2, 3);
 
+-- 05. Dados Fictícios para tb_ponto_eletronico
 INSERT INTO tb_ponto_eletronico (data_hora_entrada, data_hora_saida, falta, justificativa, descricao_justificativa, funcionario_id) VALUES
 ('2024-08-01 08:15:00', '2024-08-01 17:05:00', FALSE, FALSE, NULL, 5),
 ('2024-08-02 08:20:00', '2024-08-02 17:10:00', FALSE, FALSE, NULL, 5),
@@ -44,8 +45,6 @@ INSERT INTO tb_ponto_eletronico (data_hora_entrada, data_hora_saida, falta, just
 ('2024-08-02 08:05:00', '2024-08-02 16:55:00', FALSE, FALSE, NULL, 8),
 ('2024-08-03 09:30:00', NULL, TRUE, TRUE, 'Consulta médica', 9);
 
-
--- 05. Dados Fictícios para tb_ponto_eletronico
 INSERT INTO tb_ponto_eletronico (data_hora_entrada, data_hora_saida, falta, justificativa, descricao_justificativa, funcionario_id) VALUES
 ('2024-08-01 08:00:00', '2024-08-01 17:00:00', FALSE, FALSE, NULL, 1),
 ('2024-08-02 08:05:00', '2024-08-02 17:15:00', FALSE, FALSE, NULL, 1),
