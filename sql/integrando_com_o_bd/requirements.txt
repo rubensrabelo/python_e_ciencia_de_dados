@@ -3,7 +3,5 @@ psycopg2
 sqlalchemy
 python-dotenv
 panel
-jupyter_bokeh
 nbconvert
-tornado
-jupyter
+dotenv
