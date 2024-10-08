@@ -1,7 +1,0 @@
-pandas
-psycopg2
-sqlalchemy
-python-dotenv
-panel
-nbconvert
-dotenv

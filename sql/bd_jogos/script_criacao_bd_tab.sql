@@ -1,6 +1,6 @@
 -- Banco de dados:
 
-CREATE DATABASE gerenciamento_de_jogos;
+-- CREATE DATABASE gerenciamento_de_jogos;
 
 -- Criando e definindo o esquema
 
