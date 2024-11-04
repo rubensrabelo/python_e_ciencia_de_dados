@@ -1,23 +1,19 @@
-from enum import Enum
+from typing import Union
 
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 
-class ModelName(str, Enum):
-    alexnet = "alexnet"
-    resnet = "resnet"
-    lenet = "lenet"
+class Item(BaseModel):
+    name: str
+    description: Union[str, None] = None
+    price: float
+    tax: Union[float, None] = None
 
 
 app = FastAPI()
 
 
-@app.get("/models/{model_name}")
-async def get_model(model_name: ModelName):
-    if model_name is ModelName.alexnet:
-        return {"model_name": model_name, "message": "Deep Learning FTW"}
-
-    if model_name is ModelName.resnet:
-        return {"model_name": model_name, "message": "LeNN all the images"}
-
-    return {"model_name": model_name, "message": "Have some residuals"}
+@app.post("/items")
+async def create_item(item: Item):
+    return item
