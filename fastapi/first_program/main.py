@@ -41,3 +41,25 @@ async def read_books_by_author_path(author: str):
         if author.casefold() == book.get("author").casefold():
             books_to_return.append(book)
     return books_to_return
+
+
+@app.post("/books/create-book")
+async def create_book(book=Body()):
+    BOOKS.append(book)
+    return book
+
+
+@app.put("/books/update-book")
+async def update_book(book=Body()):
+    for i in range(len(BOOKS)):
+        if BOOKS[i].get("title").casefold() == book.get("title").casefold():
+            BOOKS[i] = book
+    return book
+
+
+@app.delete("/books/delete-book/{book_title}")
+async def delete_book(book_title: str):
+    for i in range(len(BOOKS)):
+        if BOOKS[i].get("title").casefold() == book_title.casefold():
+            BOOKS.pop(i)
+            break
