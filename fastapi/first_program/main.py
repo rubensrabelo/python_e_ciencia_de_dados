@@ -1,15 +1,48 @@
-from fastapi import Body, FastAPI
+from typing import Optional
+
+from fastapi import FastAPI, Path, Query, HTTPException, Body
+from pydantic import BaseModel, Field
+from starlette import status
 
 app = FastAPI()
 
+
+class Book:
+    id: int
+    title: str
+    author: str
+    description: str
+    rating: int
+    published_date: int
+
+    def __init__(self, id: int, title: str, author: str, description: str, rating: int, published_date: int):
+        self.id: int = id
+        self.title: str = title
+        self.author: str = author
+        self.description: str = description
+        self.rating: int = rating
+        self.published_date: int = published_date
+
+
+class BookRequest(BaseModel):
+    id: Optional[int] = Field(description="ID is not needed on create", default=None)
+    title: str = Field(min_length=3)
+    author: str = Field(min_length=1)
+    description: str = Field(min_length=1, max_length=100)
+    rating: int = Field(gt=0, lt=6)
+    published_date: int = Field(gt=1999, lt=2031)
+
+
 BOOKS = [
-    {'title': 'Title One', 'author': 'Author One', 'category': 'science'},
-    {'title': 'Title Two', 'author': 'Author Two', 'category': 'science'},
-    {'title': 'Title Three', 'author': 'Author Three', 'category': 'history'},
-    {'title': 'Title Four', 'author': 'Author Four', 'category': 'math'},
-    {'title': 'Title Five', 'author': 'Author Five', 'category': 'math'},
-    {'title': 'Title Six', 'author': 'Author Two', 'category': 'math'}
+    Book(1, 'Computer Science Pro', 'codingwithroby', 'A very nice book!', 5, 2030),
+    Book(2, 'Be Fast with FastAPI', 'codingwithroby', 'A great book!', 5, 2030),
+    Book(3, 'Master Endpoints', 'codingwithroby', 'A awesome book!', 5, 2029),
+    Book(4, 'HP1', 'Author 1', 'Book Description', 2, 2028),
+    Book(5, 'HP2', 'Author 2', 'Book Description', 3, 2027),
+    Book(6, 'HP3', 'Author 3', 'Book Description', 1, 2026)
 ]
+
+# Finalizei aqui
 
 
 @app.get("/books")
