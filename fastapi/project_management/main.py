@@ -3,16 +3,14 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from datetime import date
 from starlette import status
+import pandas as pd
 import os
-import csv
 
 app = FastAPI()
 
-# Variável para guardar o nome do arquivo csv
 CSV_FILE = "db.csv"
 
 
-# Classes para representar a entidade projeto
 class Project:
     id: int
     name: str
@@ -33,82 +31,68 @@ class ProjectRequest(BaseModel):
     status: str = Field(default="Planned")
 
 
-# Cabeçalho do csv projeto
-header_project = ["id", "name", "description", "start_date", 
+header_project = ["id", "name", "description", "start_date",
                   "end_date", "completion_prediction", "status"]
 
 
-# Funcionalidades de manipulação do arquivo csv
 def create_csv_file():
     if not os.path.exists(CSV_FILE):
-        with open(CSV_FILE, mode="w", newline="") as file:
-            writer = csv.DictWriter(file, fieldnames=header_project)
-            writer.writeheader()
+        df = pd.DataFrame(columns=header_project)
+        df.index += 1
+        df.index.name = "id"
+        df.to_csv(CSV_FILE)
 
 
 def read_csv():
-    with open(CSV_FILE, mode="r", newline="") as file:
-        reader = csv.DictReader(file)
-        return [row for row in reader]
+    return pd.read_csv(CSV_FILE, index_col="id")
 
 
-def write_csv(data):
-    with open(CSV_FILE, mode="a", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=header_project)
-        writer.writerow(data)
+def append_csv(data):
+    df = read_csv()
+    new_df = pd.DataFrame([data], columns=header_project)
+    df = pd.concat([df, new_df], ignore_index=True)
+    df.index += 1
+    df.index.name = "id"
+    df.to_csv(CSV_FILE)
 
 
-def generate_id():
-    rows = read_csv()
-    if not rows:
-        return 1
-    max_id = max(int(row["id"]) for row in rows)
-    return max_id + 1
-
-
-def update_csv(updated_data):
-    rows = read_csv()
-    for row in rows:
-        if int(row["id"]) == updated_data.id:
-            row["name"] = updated_data["name"]
-            row["description"] = updated_data["description"]
-            row["start_date"] = updated_data["start_date"]
-            row["end_date"] = updated_data["end_date"]
-            row["completion_prediction"] = updated_data["completion_prediction"]
-            row["status"] = updated_data["status"]
-            break
-    with open(CSV_FILE, mode="w", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=header_project)
-        writer.writeheader()
-        writer.writerows(rows)
+def update_csv(data_id, updated_data):
+    df = pd.read_csv()
+    if data_id in df.index:
+        df.loc[data_id, [header_project]] = [
+            updated_data["name"],
+            updated_data["description"],
+            updated_data["start_date"],
+            updated_data["end_date"],
+            updated_data["completion_prediction"],
+            updated_data["status"]
+        ]
+        df.to_csv(CSV_FILE)
 
 
 def delete_csv(data_id):
-    rows = read_csv()
-    rows = [row for row in rows if int(row["id"]) != data_id]
-    with open(CSV_FILE, mode="w", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=header_project)
-        writer.writeheader()
-        writer.writerows(rows)
+    df = pd.read_csv()
+    df = df.drop(index=data_id)
+    df.to_csv()
 
 
 create_csv_file()
 
 
-# Funcionalidades relacionadas aos métodos HTTP
 @app.get("/projets/", status_code=status.HTTP_200_OK)
 async def get_all_projects():
-    datas = read_csv()
-    return datas
+    df = read_csv()
+    return df.reset_index().to_dict(orient="records")
 
 
 @app.get("/projects/{project_id}", status_code=status.HTTP_200_OK)
 async def get_project_by_id(project_id: int):
-    datas = read_csv()
-    data = next((data for data in datas if int(data["id"]) == project_id), None)
-    if data is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
-    return data
+    df = read_csv()
+    if project_id not in df.index:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
+    project = df.loc[project_id]
+    return project.to_dict()
 
 
 @app.post("/projects/", status_code=status.HTTP_201_CREATED)
