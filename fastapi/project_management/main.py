@@ -81,12 +81,18 @@ create_csv_file()
 
 @app.get("/projets/", status_code=status.HTTP_200_OK)
 async def get_all_projects():
-    ...
+    df = read_csv()
+    return df.reset_index().to_dict(orient="records")
 
 
 @app.get("/projects/{project_id}", status_code=status.HTTP_200_OK)
 async def get_project_by_id(project_id: int):
-    ...
+    df = read_csv()
+    if project_id not in df.index:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
+    project = df.loc[project_id]
+    return project.to_dict()
 
 
 @app.post("/projects/", status_code=status.HTTP_201_CREATED)
