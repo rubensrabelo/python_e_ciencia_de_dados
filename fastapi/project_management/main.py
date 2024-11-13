@@ -28,7 +28,6 @@ header_project = ["id", "name", "description", "start_date",
 def create_csv_file():
     if not os.path.exists(CSV_FILE):
         df = pd.DataFrame(columns=header_project)
-        df["id"] = df["id"].astype(int)
         df.to_csv(CSV_FILE, index=False)
 
 
@@ -38,11 +37,13 @@ def read_csv():
 
 def append_csv(data):
     df = read_csv()
-    data["id"] = len(df) + 1 if not df.empty else 1
+    df_reset = df.reset_index()
+    next_id = df_reset["id"].max() + 1 if not df_reset.empty else 1
+    data["id"] = next_id
     new_df = pd.DataFrame([data], columns=header_project)
-    new_df["id"] = new_df["id"].astype(int)
-    df = pd.concat([df, new_df], ignore_index=True)
-    df.to_csv(CSV_FILE, index=False)
+    df_reset = pd.concat([df_reset, new_df], ignore_index=True)
+    df_reset = df_reset.set_index("id")
+    df_reset.to_csv(CSV_FILE, index=True)
 
 
 def update_csv(data_id, updated_data):
@@ -74,13 +75,20 @@ create_csv_file()
 
 
 @app.get("/projects/", status_code=status.HTTP_200_OK)
-async def get_all_projects():
+async def find_all_projects():
     df = read_csv()
     return df.reset_index().to_dict(orient="records")
 
 
+@app.get("/projects/quantity/", status_code=status.HTTP_200_OK)
+async def count_quantity():
+    df = read_csv()
+    quantity = len(df)
+    return {"count": quantity}
+
+
 @app.get("/projects/{project_id}", status_code=status.HTTP_200_OK)
-async def get_project_by_id(project_id: int):
+async def find_project_by_id(project_id: int):
     df = read_csv()
     if project_id not in df.index:
         raise HTTPException(
@@ -90,9 +98,10 @@ async def get_project_by_id(project_id: int):
 
 
 @app.post("/projects/", status_code=status.HTTP_201_CREATED)
-async def post_project(project_request: ProjectRequest):
+async def create_project(project_request: ProjectRequest):
     project_data = project_request.model_dump()
     append_csv(project_data)
+    project_data["id"] = int(project_data["id"])
     return project_data
 
 
