@@ -1,14 +1,18 @@
 from typing import Optional
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from datetime import date
 from starlette import status
 import pandas as pd
 import os
+import zipfile
+import hashlib
 
 app = FastAPI()
 
 CSV_FILE = "db.csv"
+ZIP_FILE = "db.zip"
 
 
 class ProjectRequest(BaseModel):
@@ -71,6 +75,19 @@ def delete_csv(data_id):
         raise ValueError("Project not found")
 
 
+def csv_to_zip():
+    with zipfile.ZipFile(ZIP_FILE, "w") as file:
+        file.write(CSV_FILE, arcname=os.path.basename(CSV_FILE))
+
+
+def generate_hash256():
+    sha256_hash = hashlib.sha3_256()
+    with open(CSV_FILE, "rb") as file:
+        for byte_block in iter(lambda: file.read(4096), b""):
+            sha256_hash.update(byte_block)
+    return sha256_hash.hexdigest()
+
+
 create_csv_file()
 
 
@@ -84,7 +101,19 @@ async def find_all_projects():
 async def count_quantity():
     df = read_csv()
     quantity = len(df)
-    return {"count": quantity}
+    return JSONResponse(content={"count": quantity})
+
+
+@app.get("/projects/convert-to-zip/", status_code=status.HTTP_200_OK)
+async def convert_csv_to_zip():
+    csv_to_zip()
+    return JSONResponse(content={"message": "Arquivo CSV compactado com sucesso."})
+
+
+@app.get("/projects/hash256/", status_code=status.HTTP_200_OK)
+async def get_csv_sha256():
+    hash_sha256 = generate_hash256()
+    return JSONResponse(content={"sha256": hash_sha256})
 
 
 @app.get("/projects/{project_id}", status_code=status.HTTP_200_OK)
