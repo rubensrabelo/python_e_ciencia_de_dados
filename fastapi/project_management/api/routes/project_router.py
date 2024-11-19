@@ -1,25 +1,11 @@
-from typing import Optional
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field
-from datetime import date
 from starlette import status
+
 from csv_management.csv_manager import CSVManager
-from csv_management.converter_manager import ZipManager
-from csv_management.hash_manager import HashManager
+from models import ProjectRequest
 
 router = APIRouter()
 CSVManager.create_csv_file()
-
-
-class ProjectRequest(BaseModel):
-    id: Optional[int] = Field(default=None)
-    name: str = Field(..., min_length=3, max_length=100)
-    description: str = Field(..., max_length=250)
-    start_date: date = Field(...)
-    end_date: Optional[date] = Field(default="undefined")
-    completion_prediction: date = Field(...)
-    status: str = Field(default="Planned")
 
 
 @router.get("/", status_code=status.HTTP_200_OK)
