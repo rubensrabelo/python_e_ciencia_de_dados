@@ -10,4 +10,4 @@ class ProjectRequest(BaseModel):
     start_date: date = Field(...)
     end_date: Optional[date] = Field(default="undefined")
     completion_prediction: date = Field(...)
-    status: str = Field(default="Planned")
+    status: str = Field(default="Em espera")
