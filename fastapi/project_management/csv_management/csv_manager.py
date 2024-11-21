@@ -1,7 +1,5 @@
 import pandas as pd
 import os
-import zipfile
-import hashlib
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -57,20 +55,3 @@ class CSVManager:
             df.to_csv(CSV_FILE, index=True)
         else:
             raise ValueError("Project not found")
-
-
-class ZipManager:
-    @staticmethod
-    def csv_to_zip():
-        with zipfile.ZipFile(ZIP_FILE, "w") as file:
-            file.write(CSV_FILE, arcname=os.path.basename(CSV_FILE))
-
-
-class HashManager:
-    @staticmethod
-    def generate_hash256():
-        sha256_hash = hashlib.sha3_256()
-        with open(CSV_FILE, "rb") as file:
-            for byte_block in iter(lambda: file.read(4096), b""):
-                sha256_hash.update(byte_block)
-        return sha256_hash.hexdigest()
