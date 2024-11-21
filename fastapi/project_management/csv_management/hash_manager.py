@@ -10,7 +10,7 @@ CSV_FILE = os.path.join("db", "db.csv")
 
 class HashManager:
     """
-    Classe responsável para gerar o hash SHA-256 de um arquivo
+    Classe responsável para gerar o hash SHA-256 de um arquivo.
     """
 
     @staticmethod
