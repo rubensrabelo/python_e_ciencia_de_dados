@@ -1,13 +1,14 @@
-import os
-import zipfile
+import os  # Define o módulo para a interação com o so.
+import zipfile  # Define módulo para a manipulação de arquivos zip.
 
 # Obtém o diretório base do arquivo atual.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Caminho para o arquivo CSV que será compactado.
+# Estabelece o Caminho para o arquivo CSV que será compactado.
 CSV_FILE = os.path.join("db", "db.csv")
 
-# Caminho para o arquivo ZIP onde o CSV será armazenado.
+# Estabelece o caminho para o arquivo ZIP onde o CSV será armazenado.
+# O arquivo será armazenado na subpasta `files` de `csv_management`
 ZIP_FILE = os.path.join(BASE_DIR, "files", "db.zip")
 
 
