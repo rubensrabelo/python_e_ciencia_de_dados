@@ -9,4 +9,6 @@ router = APIRouter()
 @router.get("/zip/", status_code=status.HTTP_200_OK)
 async def convert_csv_to_zip():
     ZipManager.csv_to_zip()
-    return JSONResponse(content={"message": "Arquivo CSV compactado com sucesso."})
+    return JSONResponse(
+        content={"message": "CSV file compressed successfully."}
+        )
