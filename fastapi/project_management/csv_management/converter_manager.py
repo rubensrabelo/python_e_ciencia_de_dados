@@ -26,6 +26,8 @@ class ZipManager:
         variável `ZIP_FILE` e terá o mesmo nome do arquivo original.
         """
 
-        # Cria o arquivo ZIP e adiciona o CSV a ele.
+        # Cria ou subscreve o arquivo ZIP em modo de escrita ('w').
         with zipfile.ZipFile(ZIP_FILE, "w") as file:
+            # Adiciona o CSV específicado e converte-o em ZIP
+            # para o caminho definido
             file.write(CSV_FILE, arcname=os.path.basename(CSV_FILE))
