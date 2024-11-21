@@ -20,7 +20,7 @@ class HashManager:
 
         O arquivo CSV será lido em modo binário e seu conteúdo será passado
         para o algoritmo de hash SHA-256. O valor do hash gerado será
-        retornado como uma string hexadecimal.
+        retornado como um valor hexadecimal.
         """
 
         # Abre o arquivo CSV no modo binário ('rb') para leitura.
