@@ -18,7 +18,8 @@ class CSVManager:
 
     @staticmethod
     def read_csv():
-        return pd.read_csv(CSV_FILE, index_col="id", dtype={"id": int})
+        df = pd.read_csv(CSV_FILE, index_col="id", dtype={"id": int})
+        return df
 
     @staticmethod
     def append_csv(data):

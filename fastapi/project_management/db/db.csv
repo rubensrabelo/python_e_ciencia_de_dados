@@ -1,12 +1,4 @@
 id,name,description,start_date,end_date,completion_prediction,status
-1,Documentação Técnica,Criação de documentação detalhada para projetos existentes.,2025-02-01,2025-02-15,2025-02-14,Feito
-2,Sistema ERP,Implementação de um sistema ERP para otimizar processos internos.,2024-02-01,undefined,2024-06-25,Em progresso
-3,Website E-commerce,Criação de uma plataforma para venda online de produtos artesanais.,2024-03-01,undefined,2024-05-15,Em espera
-4,Integração API,Integração de APIs externas em um sistema legado.,2024-04-10,undefined,2024-07-10,Em progresso
-5,App Mobile,Desenvolvimento de um aplicativo mobile para controle de finanças.,2024-05-05,undefined,2024-08-25,Em espera
-6,Automação de Relatórios,Criação de scripts para automação de relatórios em Excel.,2024-06-01,2024-06-20,2024-06-15,Feito
-7,Treinamento de Equipe,Treinamento interno sobre boas práticas de programação.,2024-07-01,2024-07-05,2024-07-04,Feito
-8,Reestruturação de Banco de Dados,Otimização e reestruturação do banco de dados principal.,2024-08-01,undefined,2024-11-25,Em progresso
-9,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,undefined,2024-12-15,Em espera
-10,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,undefined,2025-02-25,Em espera
-11,Monitoramento de Performance,Implementação de ferramentas para monitorar a performance de sistemas em tempo real.,2025-03-01,undefined,2025-06-10,Em espera
+1,aaaaaaaaaaaaaa,aaaaaaaaaaaaaaaaaaa,2025-03-01,undefined,2025-06-10,Em espera
+2,bbbbbbbbbbbbbb,aaaaaaaaaaaaaaaaaaa,2025-03-01,undefined,2025-06-10,Em espera
+4,aaaaaaaaaaaaaa,aaaaaaaaaaaaaaaaaaa,2025-03-01,undefined,2025-06-10,Em espera
