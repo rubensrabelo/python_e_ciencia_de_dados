@@ -1,11 +1,11 @@
 id,name,description,start_date,end_date,completion_prediction,status
 1,Sistema ERP,Implementação de um sistema ERP para otimizar processos internos.,2024-02-01,,2024-06-25,Em Progresso
-2,Website E-commerce,Criação de uma plataforma para venda online de produtos artesanais.,2024-03-01,,2024-05-15,Planejado
+2,Website E-commerce,Criação de uma plataforma para venda online de produtos artesanais.,2024-03-01,,2024-05-15,Não Feito
 3,Integração API,Integração de APIs externas em um sistema legado.,2024-04-10,2024-07-15,2024-07-10,Finalizado
-4,App Mobile,Desenvolvimento de um aplicativo mobile para controle de finanças.,2024-05-05,2024-08-30,2024-08-25,Em Finalizado
-5,Automação de Relatórios,Criação de scripts para automação de relatórios em Excel.,2024-06-01,2024-06-20,2024-06-15,Planejado
-6,Treinamento de Equipe,Treinamento interno sobre boas práticas de programação.,2024-07-01,,2024-07-04,Planejado
+4,App Mobile,Desenvolvimento de um aplicativo mobile para controle de finanças.,2024-05-05,2024-08-30,2024-08-25,Finalizado
+5,Automação de Relatórios,Criação de scripts para automação de relatórios em Excel.,2024-06-01,2024-06-20,2024-06-15,Em Progresso
+6,Treinamento de Equipe,Treinamento interno sobre boas práticas de programação.,2024-07-01,,2024-07-04,Não Feito
 7,Reestruturação de Banco de Dados,Otimização e reestruturação do banco de dados principal.,2024-08-01,2024-11-30,2024-11-25,Finalizado
-8,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,,2024-12-15,Planejado
-9,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,,2025-02-25,Planejado
-10,Criação de Dashboard,Desenvolvimento de dashboard interativo para visualização de métricas.,2024-11-01,,2024-12-05,Planejado
+8,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,,2024-12-15,Não Feito
+9,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,,2025-02-25,Não Feito
+10,Criação de Dashboard,Desenvolvimento de dashboard interativo para visualização de métricas.,2024-11-01,,2024-12-05,Em Progresso
