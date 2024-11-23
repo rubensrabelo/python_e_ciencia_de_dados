@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 from datetime import date
 
 
-# Definição do modelo de dados para solicitação 
+# Definição do modelo de dados para solicitação
 # de criação/atualização de um projeto
 class ProjectRequest(BaseModel):
     id: Optional[int] = Field(default=None)
