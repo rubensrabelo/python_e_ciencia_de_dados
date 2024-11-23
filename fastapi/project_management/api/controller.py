@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from .routes.project_router import router as project_router
-from .routes.static_router import router as static_router
+from .routes.statistic_router import router as static_router
 from .routes.converter_router import router as converter_router
 from .routes.hash_router import router as hash_router
 
