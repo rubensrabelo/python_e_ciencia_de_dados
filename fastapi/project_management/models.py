@@ -8,6 +8,6 @@ class ProjectRequest(BaseModel):
     name: str = Field(..., min_length=3, max_length=100)
     description: str = Field(..., max_length=250)
     start_date: date = Field(...)
-    end_date: Optional[date] = Field(default="undefined")
+    end_date: Optional[date] = Field(default=None)
     completion_prediction: date = Field(...)
     status: str = Field(default="Em espera")

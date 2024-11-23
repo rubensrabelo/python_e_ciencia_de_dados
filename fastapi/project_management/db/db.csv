@@ -1,16 +1,11 @@
 id,name,description,start_date,end_date,completion_prediction,status
-1,Sistema ERP,Implementação de um sistema ERP para otimizar processos internos.,2024-02-01,undefined,2024-06-25,Em Progresso
-2,Website E-commerce,Criação de uma plataforma para venda online de produtos artesanais.,2024-03-01,undefined,2024-05-15,Planejado
+1,Sistema ERP,Implementação de um sistema ERP para otimizar processos internos.,2024-02-01,,2024-06-25,Em Progresso
+2,Website E-commerce,Criação de uma plataforma para venda online de produtos artesanais.,2024-03-01,,2024-05-15,Planejado
 3,Integração API,Integração de APIs externas em um sistema legado.,2024-04-10,2024-07-15,2024-07-10,Planejado
 4,App Mobile,Desenvolvimento de um aplicativo mobile para controle de finanças.,2024-05-05,2024-08-30,2024-08-25,Em Progresso
 5,Automação de Relatórios,Criação de scripts para automação de relatórios em Excel.,2024-06-01,2024-06-20,2024-06-15,Planejado
-6,Treinamento de Equipe,Treinamento interno sobre boas práticas de programação.,2024-07-01,undefined,2024-07-04,Planejado
+6,Treinamento de Equipe,Treinamento interno sobre boas práticas de programação.,2024-07-01,,2024-07-04,Planejado
 7,Reestruturação de Banco de Dados,Otimização e reestruturação do banco de dados principal.,2024-08-01,2024-11-30,2024-11-25,Planejado
-8,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,undefined,2024-12-15,Planejado
-9,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,undefined,2025-02-25,Planejado
-10,Criação de Dashboard,Desenvolvimento de dashboard interativo para visualização de métricas.,2024-11-01,undefined,2024-12-05,Planejado
-11,Análise de Dados,Projeto para análise de dados históricos de vendas.,2024-12-01,undefined,2025-02-01,Planejado
-12,Criação de API REST,API REST para integração entre sistemas internos.,2024-12-10,2025-01-30,2025-01-25,Planejado
-13,Otimização de Algoritmos,Melhoria no desempenho de algoritmos de busca.,2025-01-15,2025-02-28,2025-02-25,Planejado
-14,Documentação Técnica,Criação de documentação detalhada para projetos existentes.,2025-02-01,2025-02-15,2025-02-14,Planejado
-15,Desenvolvimento de Chatbot,Criação de um chatbot com inteligência artificial para suporte ao cliente.,2025-03-01,undefined,2025-05-10,Planejado
+8,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,,2024-12-15,Planejado
+9,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,,2025-02-25,Planejado
+10,Criação de Dashboard,Desenvolvimento de dashboard interativo para visualização de métricas.,2024-11-01,,2024-12-05,Planejado

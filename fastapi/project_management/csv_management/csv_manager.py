@@ -27,6 +27,8 @@ class CSVManager:
         df_reset = df.reset_index()
         next_id = df_reset["id"].max() + 1 if not df_reset.empty else 1
         data["id"] = next_id
+        if not data["end_date"]:
+            data["end_date"] = ""
         with open(CSV_FILE, mode="a", encoding="utf-8") as file:
             line = ",".join([
                 str(data["id"]),
@@ -38,6 +40,7 @@ class CSVManager:
                 data["status"],
             ])
             file.write(line + "\n")
+        data["end_date"] = None
         return data
 
     @staticmethod

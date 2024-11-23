@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from starlette import status
+import pandas as pd
 
 from csv_management.csv_manager import CSVManager
 from models import ProjectRequest
@@ -11,12 +12,14 @@ CSVManager.create_csv_file()
 @router.get("/", status_code=status.HTTP_200_OK)
 async def find_all_projects():
     df = CSVManager.read_csv()
+    df["end_date"] = df["end_date"].apply(lambda x: None if pd.isna(x) else x)
     return df.reset_index().to_dict(orient="records")
 
 
 @router.get("/{project_id}", status_code=status.HTTP_200_OK)
 async def find_project_by_id(project_id: int):
     df = CSVManager.read_csv()
+    df["end_date"] = df["end_date"].apply(lambda x: None if pd.isna(x) else x)
     if project_id not in df.index:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
