@@ -15,8 +15,11 @@ from csv_management.csv_manager import CSVManager
 # esperada para projetos.
 from models import ProjectRequest
 
-# Criação do roteador para gerenciar rotas relacionadas aos projetos.
+# Cria o roteador para gerenciar rotas relacionadas aos projetos.
 router = APIRouter()
+
+# Cria o arquivo CSV na pasta db.
+CSVManager.create_csv_file()
 
 
 @router.get("/", status_code=status.HTTP_200_OK)
