@@ -27,7 +27,7 @@ async def find_project_by_id(project_id: int):
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_project(project_request: ProjectRequest):
     project_data = project_request.model_dump()
-    CSVManager.append_csv(project_data)
+    project_data = CSVManager.append_csv(project_data)
     project_data["id"] = int(project_data["id"])
     return project_data
 
@@ -40,7 +40,7 @@ async def update_project(project_id: int, project_request: ProjectRequest):
         updated_data["id"] = project_id
         return updated_data
     except ValueError as e:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=str(e))
 
 
@@ -49,5 +49,5 @@ async def delete_project(project_id: int):
     try:
         CSVManager.delete_csv(project_id)
     except ValueError as e:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=str(e))

@@ -26,10 +26,18 @@ class CSVManager:
         df_reset = df.reset_index()
         next_id = df_reset["id"].max() + 1 if not df_reset.empty else 1
         data["id"] = next_id
-        new_df = pd.DataFrame([data], columns=header_project)
-        df_reset = pd.concat([df_reset, new_df], ignore_index=True)
-        df_reset = df_reset.set_index("id")
-        df_reset.to_csv(CSV_FILE, index=True)
+        with open(CSV_FILE, mode="a", encoding="utf-8") as file:
+            line = ",".join([
+                str(data["id"]),
+                data["name"],
+                data["description"],
+                str(data["start_date"]),
+                str(data["end_date"]),
+                str(data["completion_prediction"]),
+                data["status"],
+            ])
+            file.write(line + "\n")
+        return data
 
     @staticmethod
     def update_csv(data_id, updated_data):

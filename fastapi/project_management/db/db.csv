@@ -9,3 +9,4 @@ id,name,description,start_date,end_date,completion_prediction,status
 8,Reestruturação de Banco de Dados,Otimização e reestruturação do banco de dados principal.,2024-08-01,undefined,2024-11-25,Em progresso
 9,Migração para Cloud,Migração de sistemas locais para uma solução em nuvem.,2024-09-01,undefined,2024-12-15,Em espera
 10,Projeto de IoT,Desenvolvimento de dispositivos conectados para controle residencial.,2024-10-15,undefined,2025-02-25,Em espera
+11,Monitoramento de Performance,Implementação de ferramentas para monitorar a performance de sistemas em tempo real.,2025-03-01,undefined,2025-06-10,Em espera
