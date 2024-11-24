@@ -84,7 +84,8 @@ class CSVManager:
             file.write(line + "\n")
 
         # Define o "end_date" de volta como None para manter o estado original.
-        data["end_date"] = None
+        if not data["end_date"]:
+            data["end_date"] = None
         return data
 
     @staticmethod
