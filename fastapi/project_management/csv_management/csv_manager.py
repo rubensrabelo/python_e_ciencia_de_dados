@@ -1,8 +1,8 @@
 import pandas as pd  # Define o módulo para a interação com o CSV.
 import os  # Define o módulo para a interação com o so.
 
-# Estabele do diretório base do arquivo atual.
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Define o módulo que possui o DataFrame
+from repositories.project_repository import df_project
 
 # Estabelece o caminho para o arquivo CSV que armazenará os dados dos projetos.
 CSV_FILE = os.path.join("db", "db.csv")
@@ -15,7 +15,7 @@ header_project = ["id", "name", "description", "start_date",
 class CSVManager:
     """
     Classe para gerenciar operações em um arquivo CSV.
-    Inclui métodos para criar, ler, adicionar, atualizar e excluir dados.
+    Inclui métodos para criar, adicionar, atualizar e excluir dados.
     """
 
     @staticmethod
@@ -32,19 +32,6 @@ class CSVManager:
             df.to_csv(CSV_FILE, index=False)
 
     @staticmethod
-    def read_csv():
-        """
-        Lê o conteúdo do arquivo CSV e retorna um DataFrame pandas.
-        A coluna "id" é utilizada como índice.
-
-        Returns:
-            DataFrame: Dados lidos do arquivo CSV.
-        """
-        # Lê o arquivo CSV e define o índice como a coluna "id".
-        df = pd.read_csv(CSV_FILE, index_col="id", dtype={"id": int})
-        return df
-
-    @staticmethod
     def append_csv(data):
         """
         Adiciona uma nova linha ao arquivo CSV com os dados fornecidos.
@@ -56,10 +43,8 @@ class CSVManager:
         Returns:
             dict: Dados adicionados com o campo "id" atualizado.
         """
-        # Lê o conteúdo atual do CSV.
-        df = CSVManager.read_csv()
         # Remove o índice para facilitar o cálculo do próximo ID.
-        df_reset = df.reset_index()
+        df_reset = df_project.reset_index()
 
         # Calcula o próximo ID com base no valor máximo da coluna "id".
         next_id = df_reset["id"].max() + 1 if not df_reset.empty else 1
@@ -101,13 +86,10 @@ class CSVManager:
         Raises:
             ValueError: Se o ID do projeto não for encontrado.
         """
-        # Lê o conteúdo do CSV.
-        df = CSVManager.read_csv()
-
         # Verifica se o ID existe no DataFrame.
-        if data_id in df.index:
+        if data_id in df_project.index:
             # Atualiza as colunas com os novos dados.
-            df.loc[data_id, header_project[1:]] = [
+            df_project.loc[data_id, header_project[1:]] = [
                 updated_data["name"],
                 updated_data["description"],
                 updated_data["start_date"],
@@ -116,7 +98,7 @@ class CSVManager:
                 updated_data["status"]
             ]
             # Salva as mudanças no arquivo CSV.
-            df.to_csv(CSV_FILE, index=True)
+            df_project.to_csv(CSV_FILE, index=True)
         else:
             # Lança um erro se o ID não existir.
             raise ValueError("Project not found")
@@ -132,15 +114,12 @@ class CSVManager:
         Raises:
             ValueError: Se o ID do projeto não for encontrado.
         """
-        # Lê o conteúdo do CSV.
-        df = CSVManager.read_csv()
-
         # Verifica se o ID existe no DataFrame.
-        if data_id in df.index:
+        if data_id in df_project.index:
             # Remove o projeto com o ID fornecido
-            df = df.drop(index=data_id)
+            df_project.drop(index=data_id, inplace=True)
             # Salva as alterações no arquivo CSV
-            df.to_csv(CSV_FILE, index=True)
+            df_project.to_csv(CSV_FILE, index=True)
         else:
             # Lança um erro se o ID não existir
             raise ValueError("Project not found")

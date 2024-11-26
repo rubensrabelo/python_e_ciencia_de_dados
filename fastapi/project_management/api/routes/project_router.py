@@ -15,6 +15,9 @@ from csv_management.csv_manager import CSVManager
 # esperada para projetos.
 from models import ProjectRequest
 
+# Define o módulo que possui o DataFrame
+from repositories.project_repository import df_project
+
 # Cria o roteador para gerenciar rotas relacionadas aos projetos.
 router = APIRouter()
 
@@ -34,12 +37,14 @@ async def find_all_projects():
     Returns:
         list[dict]: Lista contendo todos os projetos.
     """
-    # Lê o arquivo CSV e ajusta valores de 'end_date' nulos para None.
-    df = CSVManager.read_csv()
-    df["end_date"] = df["end_date"].apply(lambda x: None if pd.isna(x) else x)
+
+    # Verifica se a coluna é Nan, se for atribui None, se não
+    # retorna o valor na coluna.
+    df_project["end_date"] = df_project["end_date"].apply(
+        lambda x: None if pd.isna(x) else x)
 
     # Retorna os registros no formato de lista de dicionários.
-    return df.reset_index().to_dict(orient="records")
+    return df_project.reset_index().to_dict(orient="records")
 
 
 @router.get("/{project_id}", status_code=status.HTTP_200_OK)
@@ -56,17 +61,18 @@ async def find_project_by_id(project_id: int):
     Raises:
         HTTPException: Caso o projeto não seja encontrado.
     """
-    # Lê o arquivo CSV e ajusta valores de 'end_date' nulos para None.
-    df = CSVManager.read_csv()
-    df["end_date"] = df["end_date"].apply(lambda x: None if pd.isna(x) else x)
 
     # Verifica se o ID do projeto existe no índice do DataFrame.
-    if project_id not in df.index:
+    if project_id not in df_project.index:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
 
     # Retorna os dados do projeto como dicionário.
-    project = df.loc[project_id]
+    project = df_project.loc[project_id]
+
+    if not pd.isna(project["end_date"]):
+        project["end_date"] = None
+
     return project.to_dict()
 
 
@@ -89,6 +95,7 @@ async def create_project(project_request: ProjectRequest):
 
     # Garante que o ID seja retornado como inteiro.
     project_data["id"] = int(project_data["id"])
+
     return project_data
 
 
