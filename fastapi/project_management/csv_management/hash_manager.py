@@ -1,9 +1,6 @@
 import os  # Define o módulo para a interação com o so.
 import hashlib  # Define o módulo para gerar e manipular hashes
 
-# Obtém o diretório base do arquivo atual.
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 # Estabelece Caminho para o arquivo CSV para qual o hash será gerado.
 CSV_FILE = os.path.join("db", "db.csv")
 

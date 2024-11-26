@@ -1,15 +1,9 @@
 import os  # Define o módulo para a interação com o so.
+from io import BytesIO
 import zipfile  # Define módulo para a manipulação de arquivos zip.
-
-# Obtém o diretório base do arquivo atual.
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Estabelece o Caminho para o arquivo CSV que será compactado.
 CSV_FILE = os.path.join("db", "db.csv")
-
-# Estabelece o caminho para o arquivo ZIP onde o CSV será armazenado.
-# O arquivo será armazenado na subpasta `files` de `csv_management`
-ZIP_FILE = os.path.join(BASE_DIR, "files", "db.zip")
 
 
 class ZipManager:
@@ -26,8 +20,13 @@ class ZipManager:
         variável `ZIP_FILE` e terá o mesmo nome do arquivo original.
         """
 
+        zip_buffer = BytesIO()
+
         # Cria ou subscreve o arquivo ZIP em modo de escrita ('w').
-        with zipfile.ZipFile(ZIP_FILE, "w") as file:
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as file:
             # Adiciona o CSV específicado e converte-o em ZIP
             # para o caminho definido
             file.write(CSV_FILE, arcname=os.path.basename(CSV_FILE))
+        zip_buffer.seek(0)
+
+        return zip_buffer

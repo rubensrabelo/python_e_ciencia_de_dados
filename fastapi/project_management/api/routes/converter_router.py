@@ -2,12 +2,11 @@
 from fastapi import APIRouter
 
 # Importa JSONResponse para retornar respostas no formato JSON
-from fastapi.responses import JSONResponse
+from fastapi.responses import StreamingResponse
 
 # Importa o módulo de status para utilizar códigos HTTP pré-definidos
 from starlette import status
 
-# Importa a classe ZipManager, responsável por converter arquivos CSV para ZIP
 from csv_management.converter_manager import ZipManager
 
 # Cria uma roteador para gerenciar as rotas da aplicação
@@ -27,9 +26,13 @@ async def convert_csv_to_zip():
         foi comprimido com sucesso.
     """
     # Chama o método que realiza a compressão do arquivo CSV
-    ZipManager.csv_to_zip()
+    zip = ZipManager.csv_to_zip()
 
     # Retorna uma resposta JSON indicando sucesso na operação
-    return JSONResponse(
-        content={"message": "CSV file compressed successfully."}
-        )
+    return StreamingResponse(
+        zip,
+        media_type="application/x-zip-compressed",
+        headers={
+            "Content-Disposition": "attachment; filename=estoque_remedios.zip"
+        }
+    )
