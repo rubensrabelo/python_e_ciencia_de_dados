@@ -4,10 +4,20 @@ from fastapi.testclient import TestClient
 from main import app
 
 
-def test_root_deve_retornar_ok_e_ola_mundo():
+def test_create_user():
     client = TestClient(app)
 
-    response = client.get("/")
-
-    assert response.status_code == HTTPStatus.OK
-    assert response.json() == {"message": "Hello world!"}
+    response = client.post(
+        "/users/",
+        json={
+            "username": "Alice",
+            "email": "alice@example.com",
+            "password": "secret",
+        },
+    )
+    assert response.status_code == HTTPStatus.CREATED
+    assert response.json() == {
+        "username": "Alice",
+        "email": "alice@example.com",
+        "id": 1,
+    }
