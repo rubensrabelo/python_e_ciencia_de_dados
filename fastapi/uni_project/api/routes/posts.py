@@ -6,9 +6,7 @@ from starlette import status
 from models import Post
 from database import get_session
 
-router = APIRouter(
-    prefix="/posts", tags=["Posts"],
-    )
+router = APIRouter()
 
 
 @router.post("/", response_model=Post)
@@ -61,4 +59,4 @@ def delete(post_id: int, session: Session = Depends(get_session)) -> dict:
                             detail="Post not found")
     session.delete(post)
     session.commit()
-    return {"message": "Post successfully deleted."}
+    return {"message": "Post successfully deleted"}
